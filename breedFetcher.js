@@ -8,19 +8,22 @@ const fetchBreedDescription = (breedName, callback) => {
   request((apiRequestURL + breedName), function(error, response, body) {
     // Parse JSON String
     const data = JSON.parse(body);
+    let err = error;
+    let desc = null;
 
     // Check if it is empty
     if (data.length === 0) {
-      // Check if the array is empty
-      console.log("We did not find a cat breed with that name. Try again!");
+      //Check if the array is empty
+      err = "We did not find a cat breed with that name. Try again!";
+      callback(err, desc);
       return;
     }
 
     // Get the description   
-    const desc = data[0].description;
+    desc = data[0].description;
 
     // Call the callback:
-    callback(error, desc);
+    callback(err, desc);
   });
 };
 

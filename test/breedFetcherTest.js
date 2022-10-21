@@ -17,4 +17,14 @@ describe('fetchBreedDescription', () => {
       done();
     });
   });
+
+  it('returns an error if no breed is found.', (done) => {
+    fetchBreedDescription('betg', (err, desc) => {
+      // we expect no error for this scenario
+      assert.equal(err, "We did not find a cat breed with that name. Try again!");
+      assert.equal(desc, null);
+
+      done();
+    });
+  });
 });
