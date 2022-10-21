@@ -19,7 +19,7 @@ const fetchBreedDescription = (breedName, callback) => {
       return;
     }
 
-    // Get the description   
+    // Get the description
     desc = data[0].description;
 
     // Call the callback:
